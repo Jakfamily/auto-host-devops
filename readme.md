@@ -1,4 +1,3 @@
-
 # Auto-Host DevOps
 
 Auto-Host DevOps est un projet d'infrastructure automatisée qui combine **OpenTofu (anciennement Terraform)** pour le provisionnement de l'infrastructure et **Ansible** pour la configuration des services. Ce projet vise à automatiser le déploiement et la gestion des environnements de développement, de test et de production pour des applications conteneurisées.
@@ -10,14 +9,34 @@ Le projet est structuré en deux parties principales :
 1. **Infrastructure** : Provisionnement de l'infrastructure avec **OpenTofu**.
 2. **Configuration** : Configuration des services et des applications avec **Ansible**.
 
-```graphql
+```plaintext
 /auto-host-devops/
 ├── terraform/                            # Projet OpenTofu pour l'infrastructure
-│   ├── main.tf                           # Fichier principal pour créer l'infrastructure
-│   ├── variables.tf                      # Variables pour paramétrer le projet
+│   ├── main.tf                           # Fichier principal pour orchestrer les modules
+│   ├── variables.tf                      # Variables globales pour le projet
 │   ├── outputs.tf                        # Définitions des outputs (ex : IPs)
 │   ├── provider.tf                       # Configuration du fournisseur (Proxmox, etc.)
-│   └── terraform.tfstate                 # Fichier d'état de Terraform (OpenTofu)
+│   └── modules/                          # Dossier contenant les modules
+│       ├── vm-pfsense/                   # Module pour la VM pfSense
+│       │   ├── main.tf                   # Configuration spécifique pour pfSense
+│       │   ├── variables.tf              # Variables pour le module pfSense
+│       │   └── outputs.tf                # Outputs spécifiques de la VM pfSense
+│       ├── vm-traefik/                   # Module pour la VM Traefik
+│       │   ├── main.tf                   # Configuration spécifique pour Traefik
+│       │   ├── variables.tf              # Variables pour le module Traefik
+│       │   └── outputs.tf                # Outputs spécifiques de la VM Traefik
+│       ├── vm-docker-host/               # Module pour la VM Docker Host
+│       │   ├── main.tf                   # Configuration spécifique pour Docker Host
+│       │   ├── variables.tf              # Variables pour le module Docker Host
+│       │   └── outputs.tf                # Outputs spécifiques de la VM Docker Host
+│       ├── lxc-db/                       # Module pour le conteneur LXC de base de données
+│       │   ├── main.tf                   # Configuration spécifique pour LXC DB
+│       │   ├── variables.tf              # Variables pour le module DB
+│       │   └── outputs.tf                # Outputs spécifiques de la base de données
+│       └── lxc-monitoring/               # Module pour le conteneur LXC de monitoring
+│           ├── main.tf                   # Configuration spécifique pour le monitoring
+│           ├── variables.tf              # Variables pour le module monitoring
+│           └── outputs.tf                # Outputs spécifiques de monitoring
 ├── ansible/                              # Projet Ansible pour la configuration
 │   ├── playbooks/                        # Dossier pour les playbooks
 │   │   ├── docker_install.yml            # Playbook pour installer Docker
@@ -102,6 +121,11 @@ Pour garder un historique propre et structuré, utilise les tags de commit suiva
 
 L'objectif de ce projet est de fournir une infrastructure évolutive et configurable pour l'automatisation des environnements DevOps. Avec Auto-Host DevOps, vous pourrez facilement provisionner, configurer et gérer des environnements de manière reproductible.
 
+## Contact
+
+Pour plus d'informations, retrouvez-moi sur [LinkedIn](https://www.linkedin.com/in/faria-jean-baptiste/).
+
 ---
 
 Pour toute question ou amélioration, n'hésitez pas à soumettre un ticket ou une pull request.
+https://www.linkedin.com/in/faria-jean-baptiste/

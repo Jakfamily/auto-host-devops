@@ -1,0 +1,34 @@
+# Ignorer les fichiers d'état de Terraform
+*.tfstate
+*.tfstate.*
+
+# Ignorer les fichiers de verrouillage de Terraform
+.terraform/
+.terraform.lock.hcl
+
+# Ignorer les fichiers de variables sensibles
+*.tfvars
+secrets.tfvars
+
+# Ignorer les fichiers de planification Terraform
+*.tfplan
+
+# Ignorer les fichiers de configuration de Terraform
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignorer les fichiers de sauvegarde
+*.bak
+*.swp
+*.tmp
+*.backup
+
+# Ignorer les fichiers d'authentification ou sensibles
+*.pem
+*.key
+*.env
+
+# Ignorer les dossiers de cache et les fichiers temporaires de l'éditeur
+.idea/
+.vscode/
+.DS_Store
