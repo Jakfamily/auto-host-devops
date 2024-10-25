@@ -6,6 +6,7 @@ Auto-Host DevOps est un projet d'infrastructure automatisée qui combine **OpenT
 ## Structure du Projet
 
 Le projet est structuré en deux parties principales :
+
 1. **Infrastructure** : Provisionnement de l'infrastructure avec **OpenTofu**.
 2. **Configuration** : Configuration des services et des applications avec **Ansible**.
 
@@ -34,7 +35,9 @@ Le projet est structuré en deux parties principales :
 ## Fonctionnalités
 
 ### 1. Provisionnement d'Infrastructure avec OpenTofu
+
 Le dossier `terraform/` contient les fichiers de configuration pour provisionner l'infrastructure. Les ressources sont définies dans :
+
 - **main.tf** : Déclaration des ressources de base (VMs, réseaux, VLANs).
 - **variables.tf** : Définitions des variables pour personnaliser l'infrastructure.
 - **outputs.tf** : Permet de récupérer les informations importantes, comme les adresses IP des VMs, pour les utiliser dans Ansible.
@@ -42,7 +45,9 @@ Le dossier `terraform/` contient les fichiers de configuration pour provisionner
 - **terraform.tfstate** : Fichier d'état pour suivre l'infrastructure actuelle.
 
 ### 2. Configuration des Services avec Ansible
+
 Le dossier `ansible/` contient les playbooks et rôles Ansible pour configurer les services sur les machines créées avec OpenTofu.
+
 - **playbooks/** : Contient les playbooks, qui sont les scripts Ansible pour configurer les services.
   - `docker_install.yml` : Installe et configure Docker sur les VMs.
   - `pfsense_configure.yml` : Configure pfSense pour la gestion du pare-feu et des réseaux.
@@ -53,6 +58,7 @@ Le dossier `ansible/` contient les playbooks et rôles Ansible pour configurer l
   - `wordpress/` : Déploiement et configuration de WordPress.
 
 ### Configuration d'Ansible
+
 Le fichier `ansible.cfg` contient la configuration générale pour Ansible, comme le chemin vers l'inventaire et les options de connexion.
 
 ## Prérequis
@@ -64,23 +70,28 @@ Le fichier `ansible.cfg` contient la configuration générale pour Ansible, comm
 ## Installation et Démarrage
 
 1. **Initialiser et appliquer OpenTofu** :
+
    ```bash
    cd terraform/
    tofu init
    tofu apply
    ```
+
    > Cette commande provisionne les VMs et les réseaux selon la configuration d'OpenTofu.
 
 2. **Configurer les services avec Ansible** :
+
    ```bash
    cd ../ansible/
    ansible-playbook -i inventories/hosts playbooks/docker_install.yml
    ```
+
    > Ce playbook installe Docker sur les VMs provisionnées.
 
 ## Tags de Commit
 
 Pour garder un historique propre et structuré, utilise les tags de commit suivants :
+
 - **`init:`** : Initialisation du projet.
 - **`feat:`** : Ajout d'une nouvelle fonctionnalité.
 - **`fix:`** : Correction de bugs.
