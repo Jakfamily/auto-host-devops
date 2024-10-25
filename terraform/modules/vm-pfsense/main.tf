@@ -1,4 +1,11 @@
 #modules/vm-pfsense/main.tf
+terraform {
+  required_providers {
+    proxmox = {
+      source = "Telmate/proxmox"
+    }
+  }
+}
 
 resource "proxmox_vm_qemu" "pfsense" {
   name         = var.vm_name
